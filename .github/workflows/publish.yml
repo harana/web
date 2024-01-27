@@ -50,12 +50,10 @@ jobs:
           rm -fr ~/.cache/coursier/v1/https/maven.pkg.github.com
 
       - name: Populate Credentials
-        env:
-          HARANA_GITHUB_TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
         run: |
           mkdir -p ~/.sbt/1.0/plugins
           cat <<EOF > ~/.sbt/1.0/plugins/credentials.sbt
-          credentials += Credentials("GitHub Package Registry", "maven.pkg.github.com", "nadenf", System.getenv("HARANA_GITHUB_TOKEN"))
+          credentials += Credentials("GitHub Package Registry", "maven.pkg.github.com", "nadenf", System.getenv("GITHUB_TOKEN"))
           EOF
 
       - name: Publish Packages
