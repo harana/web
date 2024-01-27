@@ -1,4 +1,4 @@
-name: Publish
+name: Publish Library
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        scala: [2.12.18]
+        scala: [2.13.12]
         java: [zulu@1.17]
     runs-on: harana-dev-linux
     steps:
@@ -52,8 +52,6 @@ jobs:
       - name: Publish Packages
         env:
           GITHUB_TOKEN: ${{ secrets.WRITE_PACKAGES_TOKEN }}
-          JAVA_OPTS: -Xms4048M -Xmx4048M -Xss6M -XX:ReservedCodeCacheSize=256M -Dfile.encoding=UTF-8
-          JVM_OPTS:  -Xms4048M -Xmx4048M -Xss6M -XX:ReservedCodeCacheSize=256M -Dfile.encoding=UTF-8
         run: sbt ++${{ matrix.scala }} publish
 
       - name: Get Scala Major Version
@@ -69,8 +67,8 @@ jobs:
           keep: 2
           version-pattern: ".+?SNAPSHOT"
           names: |
-            com.harana.web_${{ steps.scala.outputs.group1 }}
-            com.harana.webJS_${{ steps.scala.outputs.group1 }}
+            com.harana.${{ github.event.repository.name }}_${{ steps.scala.outputs.group1 }}
+            com.harana.${{ github.event.repository.name }}JS_${{ steps.scala.outputs.group1 }}
 
       - name: Remove Older Releases
         uses: smartsquaregmbh/delete-old-packages@v0.2.0
@@ -78,15 +76,15 @@ jobs:
           keep: 2
           version-pattern: .*[^SNAPSHOT]$
           names: |
-            com.harana.web${{ steps.scala.outputs.group1 }}
-            com.harana.webJS_${{ steps.scala.outputs.group1 }}
+            com.harana.${{ github.event.repository.name }}_${{ steps.scala.outputs.group1 }}
+            com.harana.${{ github.event.repository.name }}JS_${{ steps.scala.outputs.group1 }}
 
       - name: Notify Slack - Success
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_FOOTER: ""
-          SLACK_MESSAGE: "✅  web  |  publish  |  ${{ steps.ref.outputs.replaced }}"
+          SLACK_MESSAGE: "✅  ${{ github.event.repository.name }}  |  publish  |  ${{ steps.ref.outputs.replaced }}"
           SLACK_WEBHOOK: ${{ secrets.SLACK_BUILDS_WEBHOOK }}
 
       - name: Notify Slack - Failure
@@ -94,5 +92,5 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_FOOTER: ""
-          SLACK_MESSAGE: "⛔️  web  |  publish  |  ${{ steps.ref.outputs.replaced }}"
+          SLACK_MESSAGE: "⛔️  ${{ github.event.repository.name }}  |  publish  |  ${{ steps.ref.outputs.replaced }}"
           SLACK_WEBHOOK: ${{ secrets.SLACK_BUILDS_WEBHOOK }}
