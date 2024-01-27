@@ -49,6 +49,15 @@ jobs:
         run: |
           rm -fr ~/.cache/coursier/v1/https/maven.pkg.github.com
 
+      - name: Populate Credentials
+        env:
+          HARANA_GITHUB_TOKEN: ${{ secrets.READ_PACKAGES_TOKEN }}
+        run: |
+          mkdir -p ~/.sbt/1.0/plugins
+          cat <<EOF > ~/.sbt/1.0/plugins/credentials.sbt
+          credentials += Credentials("GitHub Package Registry", "maven.pkg.github.com", "nadenf", System.getenv("HARANA_GITHUB_TOKEN"))
+          EOF
+
       - name: Publish Packages
         env:
           GITHUB_TOKEN: ${{ secrets.WRITE_PACKAGES_TOKEN }}
@@ -78,6 +87,11 @@ jobs:
           names: |
             com.harana.${{ github.event.repository.name }}_${{ steps.scala.outputs.group1 }}
             com.harana.${{ github.event.repository.name }}JS_${{ steps.scala.outputs.group1 }}
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -fr ~/.sbt/1.0/plugins/credentials.sbt
 
       - name: Notify Slack - Success
         if: success()
