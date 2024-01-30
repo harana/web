@@ -51,6 +51,14 @@ jobs:
           credentials += Credentials("GitHub Package Registry", "maven.pkg.github.com", "nadenf", System.getenv("GITHUB_TOKEN"))
           EOF
 
+      - name: Install JS Dependencies
+        run: |
+          if [ -d 'js' ]; then
+            cd js
+            pnpm install
+            cd ..
+          fi
+
       - name: Publish Packages
         env:
           GITHUB_TOKEN: ${{ secrets.WRITE_PACKAGES_TOKEN }}
