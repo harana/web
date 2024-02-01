@@ -1,6 +1,5 @@
 package com.harana.web.external.chakra.grid
 
-import com.harana.js.csstype.mod.Property.GridAutoColumns
 import slinky.core.ExternalComponent
 import slinky.core.annotations.react
 
@@ -13,7 +12,7 @@ object ReactGrid extends js.Object
 
 @react object Grid extends ExternalComponent {
 
-  case class Props(autoColumns: js.UndefOr[GridAutoColumns[_]] = js.undefined,
+  case class Props(autoColumns: js.UndefOr[js.Object] = js.undefined,
                    autoFlow: js.UndefOr[String] = js.undefined,
                    autoRows: js.UndefOr[String] = js.undefined,
                    column: js.UndefOr[String] = js.undefined,
