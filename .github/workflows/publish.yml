@@ -28,23 +28,27 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache
+      - name: Setup Cache
         run: |
-          sleep 10000
-          mkdir ~/.cache
-          mkdir ~/.ivy2
-          mkdir ~/.sbt
+          mkdir -p /opt/cache/coursier_cache
+          mkdir -p /opt/cache/ivy2_cache
+          mkdir -p /opt/cache/sbt_cache
+          rm -fr ~/.cache ; mkdir ~/.cache
+          rm -fr ~/.ivy2 ; mkdir ~/.ivy2
+          rm -fr ~/.sbt ; mkdir ~/.sbt
           ln -s /opt/cache/coursier_cache ~/.cache/coursier
           ln -s /opt/cache/ivy2_cache ~/.ivy2/cache
-          ln -s /opt/cache/sbt_boot ~/.sbt/boot
+          ln -s /opt/cache/sbt_cache ~/.sbt/boot
 
       - name: Populate Credentials
         run: |
-          rm -fr ~/.cache/coursier/v1/https/maven.pkg.github.com
           mkdir -p ~/.sbt/1.0/plugins
-          cat <<EOF > ~/.sbt/1.0/plugins/credentials.sbt
-          credentials += Credentials("GitHub Package Registry", "maven.pkg.github.com", "nadenf", System.getenv("GITHUB_TOKEN"))
-          EOF
+
+          if ! [ -f ~/.sbt/1.0/plugins/credentials.sbt ]; then
+            cat <<EOF > ~/.sbt/1.0/plugins/credentials.sbt
+            credentials += Credentials("GitHub Package Registry", "maven.pkg.github.com", "nadenf", System.getenv("GITHUB_TOKEN"))
+            EOF
+          fi
 
       - name: Install JS Dependencies
         run: |
