@@ -33,7 +33,7 @@ import scala.scalajs.js
         `type` := "text",
         name := props.name,
         id := props.id,
-        className := s"relative block w-full rounded-none $cls border-0 bg-transparent py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",
+        className := s"relative block w-full rounded-none $cls border-0 bg-transparent py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6",
         placeholder := props.placeholder,
         onChange := (event => if (props.onChange.nonEmpty) props.onChange.get(event.target.asInstanceOf[js.Dynamic].value.toString))
       )

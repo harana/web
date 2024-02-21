@@ -29,7 +29,7 @@ import scala.scalajs.js.|
         Fragment(
           TwListboxLabel(className = "block text-sm font-medium leading-6 text-gray-900")(props.label),
           div(className := "relative")(
-            TwListboxButton(className = "relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6")(
+            TwListboxButton(className = "relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 sm:text-sm sm:leading-6")(
               span(className := "block truncate")(props.itemTitle(props.selectedItem)),
               span(className := "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2")(
                 ChevronUpDownIcon(Some("h-5 w-5 text-gray-400"))
@@ -48,7 +48,7 @@ import scala.scalajs.js.|
                     key = props.itemId(item),
                     className = (value: js.Dynamic) => {
                       val active = value.active.toString == "true"
-                      s"${if (active) "bg-indigo-600 text-white" else "text-gray-900"} relative cursor-default select-none py-2 pl-3 pr-9"
+                      s"${if (active) "bg-emerald-600 text-white" else "text-gray-900"} relative cursor-default select-none py-2 pl-3 pr-9"
                     },
                     value = item,
                     children = (optionValue: js.Dynamic) => {
@@ -58,7 +58,7 @@ import scala.scalajs.js.|
                       Fragment(
                         span(className := s"${if (selected) "font-semibold" else "font-normal"} block truncate")(props.itemTitle(item)),
                         when(selected)(
-                          span(className := s"${if (active) "text-white" else "text-indigo-600"} absolute inset-y-0 right-0 flex items-center pr-4")(
+                          span(className := s"${if (active) "text-white" else "text-emerald-600"} absolute inset-y-0 right-0 flex items-center pr-4")(
                             CheckIcon("h-5 w-5")
                           )
                         )
