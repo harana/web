@@ -482,6 +482,30 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "UserGroupIcon")
+  object ReactUserGroupOutlineIcon extends js.Object
+  @react object UserGroupOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactUserGroupOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "UserMinusIcon")
+  object ReactUserMinusOutlineIcon extends js.Object
+  @react object UserMinusOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactUserMinusOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "UserPlusIcon")
+  object ReactUserPlusOutlineIcon extends js.Object
+  @react object UserPlusOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactUserPlusOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "UsersIcon")
   object ReactUsersOutlineIcon extends js.Object
   @react object UsersOutlineIcon extends ExternalComponent {
