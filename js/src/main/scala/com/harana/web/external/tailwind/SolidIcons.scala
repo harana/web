@@ -119,6 +119,15 @@ object SolidIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/20/solid", "UserIcon")
+  object ReactUserIcon extends js.Object
+
+  @react object UserIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactUserIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/20/solid", "XMarkIcon")
   object ReactXmarkIcon extends js.Object
 

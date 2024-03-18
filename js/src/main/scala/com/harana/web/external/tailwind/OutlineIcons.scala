@@ -65,6 +65,14 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "BanknotesIcon")
+  object ReactBanknotesOutlineIcon extends js.Object
+  @react object BeakerOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactBanknotesOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "BeakerIcon")
   object ReactBeakerOutlineIcon extends js.Object
   @react object BeakerOutlineIcon extends ExternalComponent {
@@ -142,6 +150,14 @@ object OutlineIcons {
   @react object CircleStackOutlineIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
     override val component = ReactCircleStackOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "CreditCardIcon")
+  object ReactCreditCardOutlineIcon extends js.Object
+  @react object CreditCardOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactCreditCardOutlineIcon
   }
 
   @js.native
@@ -447,6 +463,30 @@ object OutlineIcons {
   @react object TableCellsOutlineIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
     override val component = ReactTableCellsOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "TicketIcon")
+  object ReactTicketOutlineIcon extends js.Object
+  @react object TicketOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactTicketOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "UserIcon")
+  object ReactUserOutlineIcon extends js.Object
+  @react object UserOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactUserOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "UserCircleIcon")
+  object ReactUserCircleOutlineIcon extends js.Object
+  @react object UserCircleOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactUserCircleOutlineIcon
   }
 
   @js.native
