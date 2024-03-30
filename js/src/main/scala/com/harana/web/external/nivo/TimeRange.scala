@@ -30,7 +30,7 @@ object ReactTimeRange extends js.Object
                    monthLegendPosition: js.UndefOr[String] = js.undefined,
                    monthLegendOffset: js.UndefOr[Int] = js.undefined,
                    weekdayLegendOffset: js.UndefOr[Int] = js.undefined,
-                   weekdayTickets: js.UndefOr[List[Int]] = js.undefined,
+                   weekdayTicks: js.UndefOr[List[Int]] = js.undefined,
                    square: js.UndefOr[Boolean] = js.undefined,
                    dayRadius: js.UndefOr[Int] = js.undefined,
                    daySpacing: js.UndefOr[Int] = js.undefined,
