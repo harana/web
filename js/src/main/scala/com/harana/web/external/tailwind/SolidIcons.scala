@@ -128,12 +128,20 @@ object SolidIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/20/solid", "XCircleIcon")
+  object ReactXCircleIcon extends js.Object
+
+  @react object XCircleIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactXCircleIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/20/solid", "XMarkIcon")
   object ReactXmarkIcon extends js.Object
 
   @react object XMarkIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
-
     override val component = ReactXmarkIcon
   }
 
