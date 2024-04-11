@@ -50,7 +50,7 @@ import scala.util.Random
 
 					case Some(PillChartType.Bar) =>
 						div()
-//						BarChart(x.toList, 50, "rgba(255,255,255,0.5)", Some("members"))
+					//						BarChart(x.toList, 50, "rgba(255,255,255,0.5)", Some("members"))
 
 					case Some(PillChartType.Line) =>
 						val a = LineChartItem(new js.Date("Mon, 25 Dec 1995 09:30:00 GMT"), 10)

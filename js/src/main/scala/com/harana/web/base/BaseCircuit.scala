@@ -15,4 +15,8 @@ abstract class BaseCircuit[S <: AnyRef] extends diode.Circuit[S] with State[S] {
   override lazy val actionHandler =
     foldHandlers(handlers: _*)
 
+  override def handleFatal(action: Any, e: Throwable): Unit = {
+    println(s"Action: $action failed due to error: ${e.getMessage}")
+    throw e
+  }
 }

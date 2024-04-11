@@ -1,5 +1,6 @@
 package com.harana.web.external.tailwind
 
+import com.harana.web.external.tailwind.SolidIcons.ReactPauseIcon
 import slinky.core.ExternalComponent
 import slinky.core.annotations.react
 
@@ -105,6 +106,30 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "BuildingOfficeIcon")
+  object ReactBuildingOfficeOutlineIcon extends js.Object
+  @react object BuildingOfficeOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactBuildingOfficeOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "BuildingStorefrontIcon")
+  object ReactBuildingStorefrontOutlineIcon extends js.Object
+  @react object BuildingStorefrontOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactBuildingStorefrontOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "CakeIcon")
+  object ReactCakeOutlineIcon extends js.Object
+  @react object CakeOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactCakeOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "CalculatorIcon")
   object ReactCalculatorOutlineIcon extends js.Object
   @react object CalculatorOutlineIcon extends ExternalComponent {
@@ -126,6 +151,30 @@ object OutlineIcons {
   @react object CameraOutlineIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
     override val component = ReactCameraOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "ChartPieIcon")
+  object ReactChartPieOutlineIcon extends js.Object
+  @react object ChartPieOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactChartPieOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "ChatBubbleLeftIcon")
+  object ReactChatBubbleLeftOutlineIcon extends js.Object
+  @react object ChatBubbleLeftOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactChatBubbleLeftOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "ChatBubbleLeftRightIcon")
+  object ReactChatBubbleLeftRightOutlineIcon extends js.Object
+  @react object ChatBubbleLeftRightOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactChatBubbleLeftRightOutlineIcon
   }
 
   @js.native
@@ -193,6 +242,14 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "ComputerDesktopIcon")
+  object ReactComputerDesktopOutlineIcon extends js.Object
+  @react object ComputerDesktopOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactComputerDesktopOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "CpuChipIcon")
   object ReactCpuChipOutlineIcon extends js.Object
   @react object CpuChipOutlineIcon extends ExternalComponent {
@@ -214,6 +271,30 @@ object OutlineIcons {
   @react object CubeOutlineIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
     override val component = ReactCubeOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "DocumentArrowUpIcon")
+  object ReactDocumentArrowUpOutlineIcon extends js.Object
+  @react object DocumentArrowUpOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactDocumentArrowUpOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "DocumentArrowDownIcon")
+  object ReactDocumentArrowDownOutlineIcon extends js.Object
+  @react object DocumentArrowDownOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactDocumentArrowDownOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "DocumentChartBarIcon")
+  object ReactDocumentChartBarOutlineIcon extends js.Object
+  @react object DocumentChartBarOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactDocumentChartBarOutlineIcon
   }
 
   @js.native
@@ -273,11 +354,35 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "GlobeAsiaAustraliaIcon")
+  object ReactGlobeAsiaAustraliaOutlineIcon extends js.Object
+  @react object GlobeAsiaAustraliaOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactGlobeAsiaAustraliaOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "HashtagIcon")
+  object ReactHashtagOutlineIcon extends js.Object
+  @react object HashtagOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactHashtagOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "IdentificationIcon")
   object ReactIdentificationOutlineIcon extends js.Object
   @react object IdentificationOutlineIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
     override val component = ReactIdentificationOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "InboxIcon")
+  object ReactInboxOutlineIcon extends js.Object
+  @react object InboxOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactInboxOutlineIcon
   }
 
   @js.native
@@ -321,6 +426,14 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "MegaphoneIcon")
+  object ReactMegaphoneOutlineIcon extends js.Object
+  @react object MegaphoneOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactMegaphoneOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "MusicalNoteIcon")
   object ReactMusicalNoteOutlineIcon extends js.Object
   @react object MusicalNoteOutlineIcon extends ExternalComponent {
@@ -354,6 +467,22 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "PaintBrushIcon")
+  object ReactPaintBrushOutlineIcon extends js.Object
+  @react object PaintBrushOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactPaintBrushOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "PauseIcon")
+  object ReactPauseOutlineIcon extends js.Object
+  @react object PauseOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactPauseOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "PlayIcon")
   object ReactPlayOutlineIcon extends js.Object
   @react object PlayOutlineIcon extends ExternalComponent {
@@ -367,6 +496,14 @@ object OutlineIcons {
   @react object PlusOutlineIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
     override val component = ReactPlusOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "PresentationChartLineIcon")
+  object ReactPresentationChartLineOutlineIcon extends js.Object
+  @react object PresentationChartLineOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactPresentationChartLineOutlineIcon
   }
 
   @js.native
@@ -394,6 +531,14 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "ReceiptPercentIcon")
+  object ReactReceiptPercentOutlineIcon extends js.Object
+  @react object ReceiptPercentOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactReceiptPercentOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "RectangleGroupIcon")
   object ReactRectangleGroupOutlineIcon extends js.Object
   @react object RectangleGroupOutlineIcon extends ExternalComponent {
@@ -407,6 +552,14 @@ object OutlineIcons {
   @react object RocketLaunchOutlineIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
     override val component = ReactRocketLaunchOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "ScaleIcon")
+  object ReactScaleOutlineIcon extends js.Object
+  @react object ScaleOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactScaleOutlineIcon
   }
 
   @js.native
@@ -434,6 +587,14 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "SquaresPlusIcon")
+  object ReactSquaresPlusOutlineIcon extends js.Object
+  @react object SquaresPlusOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactSquaresPlusOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "SwatchIcon")
   object ReactSwatchOutlineIcon extends js.Object
   @react object SwatchOutlineIcon extends ExternalComponent {
@@ -450,6 +611,14 @@ object OutlineIcons {
   }
 
   @js.native
+  @JSImport("@heroicons/react/24/outline", "TagIcon")
+  object ReactTagOutlineIcon extends js.Object
+  @react object TagOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactTagOutlineIcon
+  }
+
+  @js.native
   @JSImport("@heroicons/react/24/outline", "TicketIcon")
   object ReactTicketOutlineIcon extends js.Object
   @react object TicketOutlineIcon extends ExternalComponent {
@@ -463,6 +632,14 @@ object OutlineIcons {
   @react object TrashOutlineIcon extends ExternalComponent {
     case class Props(className: js.UndefOr[String] = js.undefined)
     override val component = ReactTrashOutlineIcon
+  }
+
+  @js.native
+  @JSImport("@heroicons/react/24/outline", "TruckIcon")
+  object ReactTruckOutlineIcon extends js.Object
+  @react object TruckOutlineIcon extends ExternalComponent {
+    case class Props(className: js.UndefOr[String] = js.undefined)
+    override val component = ReactTruckOutlineIcon
   }
 
   @js.native
