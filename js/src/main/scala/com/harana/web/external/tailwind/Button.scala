@@ -47,6 +47,7 @@ object ButtonSize {
         s"${props.backgroundColor} " +
         s"hover:${props.hoverColor} " +
         s"${props.textColor} " +
+        s"${props.className.getOrElse("")} " +
         s"font-semibold shadow-sm ring-1 ring-inset"
     )(
       when(props.icon.isDefined)(props.icon.get),
