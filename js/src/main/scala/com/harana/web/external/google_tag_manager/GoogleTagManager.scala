@@ -3,7 +3,7 @@ package com.harana.web.external.google_tag_manager
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
-@JSImport("react-gtm-module-nonce-patch", "TagManager")
+@JSImport("d", "TagManager")
 @js.native
 object TagManager extends js.Object {
   def dataLayer(args: DataLayerArgs): Boolean = js.native
@@ -11,7 +11,7 @@ object TagManager extends js.Object {
 }
 
 trait DataLayerArgs extends js.Object {
-  val dataLayer: js.UndefOr[js.Object] = js.undefined
+  val dataLayer: js.Dictionary[js.Any]
   val dataLayerName: js.UndefOr[String] = js.undefined
 }
 

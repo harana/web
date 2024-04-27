@@ -1,6 +1,7 @@
 package com.harana.web.base
 
 import com.harana.sdk.shared.models.jwt.HaranaClaims
+import com.harana.web.external.google_tag_manager.{DataLayerArgs, TagManager}
 import org.scalajs.dom
 import slinky.history.History
 
@@ -8,10 +9,9 @@ import java.time.format.DateTimeFormatter
 import java.time.{Instant, ZoneId, ZoneOffset}
 import scala.collection.mutable.ListBuffer
 import scala.scalajs.js
-import scala.scalajs.js.Dynamic
 import scala.scalajs.js.JSConverters._
 
-class BaseAnalytics {
+class Analytics {
 
   private val pageHistory = new ListBuffer[String]
 
@@ -255,9 +255,9 @@ class BaseAnalytics {
             "last_session"              -> lastSession,
             "marketing_channel"         -> claims.get.marketingChannel.map(_.entryName).orUndefined,
             "marketing_channel_id"      -> claims.get.marketingChannelId.orUndefined,
-            "subscription_ended"        -> date(claims.get.billing.subscriptionEnded),
             "subscription_customer_id"  -> claims.get.billing.subscriptionCustomerId.orUndefined,
             "subscription_duration"     -> duration(claims.get.billing.subscriptionStarted, claims.get.billing.subscriptionEnded),
+            "subscription_ended"        -> date(claims.get.billing.subscriptionEnded),
             "subscription_id"           -> claims.get.billing.subscriptionId.orUndefined,
             "subscription_price"        -> claims.get.billing.subscriptionPrice.map(p => (p / 100).toString).orUndefined,
             "subscription_price_id"     -> claims.get.billing.subscriptionPriceId.orUndefined,
@@ -267,6 +267,10 @@ class BaseAnalytics {
             "trial_ended"               -> date(claims.get.billing.trialEnded),
             "trial_started"             -> date(claims.get.billing.trialStarted))
       }
+
+      TagManager.dataLayer(new DataLayerArgs {
+        override val dataLayer = event
+      })
 
     } catch {
       case e: Exception => println(s"Failed to send event: ${e.getMessage}")

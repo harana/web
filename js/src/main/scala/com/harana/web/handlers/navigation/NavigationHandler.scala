@@ -2,7 +2,7 @@ package com.harana.web.handlers.navigation
 
 import com.harana.web.InitialState
 import com.harana.web.actions.Init
-import com.harana.web.base.BaseAnalytics
+import com.harana.web.base.Analytics
 import com.harana.web.handlers.navigation.NavigationStore._
 import com.harana.web.handlers.user.UserStore.SetPreference
 import com.harana.web.utils.http.Http
@@ -15,7 +15,7 @@ import sttp.model.Header
 import typings.stripeV3.global.{Stripe_ => Stripe}
 import typings.stripeV3.stripe.StripeServerCheckoutOptions
 
-class NavigationHandler[S](state: ModelRW[S, NavigationStore.State], analytics: BaseAnalytics) extends ActionHandler(state) {
+class NavigationHandler[S](state: ModelRW[S, NavigationStore.State], analytics: Analytics) extends ActionHandler(state) {
 
   private val routePreferenceId = "designer.route"
 
