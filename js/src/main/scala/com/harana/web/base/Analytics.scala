@@ -32,15 +32,16 @@ class Analytics {
   def date(time: Option[Instant]): String =
     if (time.nonEmpty) dateFormatter.format(time.get) else ""
 
-  def history = {
+  def history(sendTelemetry: Boolean) = {
     val history = History.createBrowserHistory()
     history.listen(() => {
-      pageView(
-        pageHostname = dom.window.location.hostname,
-        pagePath = dom.window.location.pathname,
-        pageReferrer = pageHistory.lastOption,
-        pageUrl = dom.window.location.href
-      )
+      if (sendTelemetry)
+        pageView(
+          pageHostname = dom.window.location.hostname,
+          pagePath = dom.window.location.pathname,
+          pageReferrer = pageHistory.lastOption,
+          pageUrl = dom.window.location.href
+        )
       pageHistory += dom.window.location.href
     })
     history

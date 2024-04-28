@@ -46,7 +46,7 @@ class NavigationHandler[S](state: ModelRW[S, NavigationStore.State], analytics: 
 
 
     case OpenRoute(route) =>
-      analytics.history.push(route)
+      analytics.history(value.sendTelemetry).push(route)
       noChange
 
 
@@ -56,5 +56,9 @@ class NavigationHandler[S](state: ModelRW[S, NavigationStore.State], analytics: 
 
     case UpdateOpeningCheckout(opening) =>
         updated(value.copy(openingCheckout = opening))
+
+
+    case UpdateSendTelemetry(enable) =>
+      updated(value.copy(openingCheckout = enable))
   }
 }
