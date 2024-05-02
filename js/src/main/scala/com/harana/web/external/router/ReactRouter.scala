@@ -1,4 +1,4 @@
-package com.harana.web.external.react_router
+package com.harana.web.external.router
 
 import slinky.core._
 import slinky.core.annotations.react
@@ -14,26 +14,58 @@ object ReactRouter extends js.Object {
   val StaticRouter: js.Object = js.native
 }
 
-@JSImport("react-router-dom", "BrowserRouter")
+@JSImport("react-router-dom", JSImport.Default)
 @js.native
-object ReactBrowserRouter extends js.Object
-@react object BrowserRouter extends ExternalComponent {
-  case class Props()
-  override val component = ReactBrowserRouter
+object ReactRouterDOM extends js.Object {
+  val Router: js.Object = js.native
+  val BrowserRouter: js.Object = js.native
+  val MemoryRouter: js.Object = js.native
+  val Route: js.Object = js.native
+  val Routes : js.Object = js.native
+  val Switch : js.Object = js.native
+  val Link: js.Object = js.native
+  val NavLink: js.Object = js.native
 }
 
-@JSImport("react-router-dom", "Routes")
-@js.native
-object ReactRoutes extends js.Object
-@react object Routes extends ExternalComponent {
+
+@react object MemoryRouter extends ExternalComponent {
   case class Props()
-  override val component = ReactRoutes
+  override val component = ReactRouterDOM.MemoryRouter
 }
 
-@JSImport("react-router-dom", "Route")
-@js.native
-object ReactRoute extends js.Object
+@react object StaticRouter extends ExternalComponent {
+  case class Props(location: String, context: js.Object)
+  override val component = ReactRouter.StaticRouter
+}
+
+@react object Router extends ExternalComponent {
+  case class Props(history: History)
+  override val component = ReactRouterDOM.Router
+}
+
+object BrowserRouter extends ExternalComponentNoProps {
+  override val component = ReactRouterDOM.BrowserRouter
+}
+
+object Routes extends ExternalComponentNoProps {
+  override val component = ReactRouterDOM.Routes
+}
+
+object Switch extends ExternalComponentNoProps {
+  override val component = ReactRouterDOM.Switch
+}
+
 @react object Route extends ExternalComponent {
   case class Props(path: String, component: ReactComponentClass[_], exact: Boolean = false)
-  override val component = ReactRoute
+  override val component = ReactRouterDOM.Route
+}
+
+@react object Link extends ExternalComponentWithAttributes[a.tag.type] {
+  case class Props(to: String)
+  override val component = ReactRouterDOM.Link
+}
+
+@react object NavLink extends ExternalComponentWithAttributes[a.tag.type] {
+  case class Props(to: String, activeStyle: Option[js.Dynamic] = None, activeClassName: Option[String] = None)
+  override val component = ReactRouterDOM.NavLink
 }
