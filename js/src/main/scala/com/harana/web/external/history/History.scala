@@ -18,7 +18,7 @@ trait RichHistory extends DomHistory {
   def replace(path: String, state: js.Object): Unit = js.native
 }
 
-@JSImport("history", JSImport.Default)
+@JSImport("history", JSImport.Namespace)
 @js.native
 object History extends js.Object {
   def createBrowserHistory(): RichHistory = js.native

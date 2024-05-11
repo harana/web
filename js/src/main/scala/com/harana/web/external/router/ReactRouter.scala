@@ -8,13 +8,13 @@ import org.scalajs.dom.History
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
-@JSImport("react-router", JSImport.Default)
+@JSImport("react-router", JSImport.Namespace)
 @js.native
 object ReactRouter extends js.Object {
   val StaticRouter: js.Object = js.native
 }
 
-@JSImport("react-router-dom", JSImport.Default)
+@JSImport("react-router-dom", JSImport.Namespace)
 @js.native
 object ReactRouterDOM extends js.Object {
   val Router: js.Object = js.native

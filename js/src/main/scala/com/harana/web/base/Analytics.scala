@@ -1,9 +1,9 @@
 package com.harana.web.base
 
 import com.harana.sdk.shared.models.jwt.HaranaClaims
-import com.harana.web.external.google_tag_manager.{DataLayerArgs, TagManager}
+import com.harana.web.external.google_tag_manager.{DataLayerArgs, TagManager, TagManagerArgs}
+import com.harana.web.external.history.History
 import org.scalajs.dom
-import slinky.history.History
 
 import java.time.format.DateTimeFormatter
 import java.time.{Instant, ZoneId, ZoneOffset}
@@ -11,9 +11,13 @@ import scala.collection.mutable.ListBuffer
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
 
-class Analytics {
+class Analytics(appId: String, appName: String, gtmId: String) {
 
   private val pageHistory = new ListBuffer[String]
+
+  TagManager.initialize(new TagManagerArgs {
+    override val gtmId: String = gtmId
+  })
 
   val dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC))
 
@@ -194,14 +198,17 @@ class Analytics {
         "method"      -> method.orUndefined
     ))
 
-  def appStart(claims: HaranaClaims, appId: String, appName: String) =
-    pushEvent("app_start", Some(claims), appId = Some(appId), appName = Some(appName))
+  def appStart =
+    pushEvent("app_start", None)
 
-  def appStop(claims: HaranaClaims, appId: String, appName: String) =
-    pushEvent("app_stop", Some(claims), appId = Some(appId), appName = Some(appName))
+  def appStop =
+    pushEvent("app_stop", None)
 
   def init(claims: HaranaClaims) =
     pushEvent("init", Some(claims))
+
+  def launch =
+    pushEvent("launch", None)
 
   def pageView(pageHostname: String, pagePath: String, pageReferrer: Option[String], pageUrl: String) =
     pushEvent("page_view", None, pageHostname = Some(pageHostname), pagePath = Some(pagePath), pageReferrer = pageReferrer, pageUrl = Some(pageUrl))
@@ -215,24 +222,22 @@ class Analytics {
   def unsubscribe(claims: HaranaClaims) =
     pushEvent("unsubscribe", Some(claims))
 
-  protected def pushEvent(eventName: String,
-                          claims: Option[HaranaClaims],
-                          appId: Option[String] = None,
-                          appName: Option[String] = None,
-                          newSession: Boolean = false,
-                          pageHostname: Option[String] = None,
-                          pagePath: Option[String] = None,
-                          pageReferrer: Option[String] = None,
-                          pageUrl: Option[String] = None,
-                          otherAttributes: js.Dictionary[js.Any] = js.Dictionary()) =
+  def pushEvent(eventName: String,
+                claims: Option[HaranaClaims],
+                newSession: Boolean = false,
+                pageHostname: Option[String] = None,
+                pagePath: Option[String] = None,
+                pageReferrer: Option[String] = None,
+                pageUrl: Option[String] = None,
+                otherAttributes: js.Dictionary[js.Any] = js.Dictionary()) =
 
     try {
       val event =
         if (claims.isEmpty)
           js.Dictionary[js.Any](
             "event"         -> eventName,
-            "app_id"        -> appId.orUndefined,
-            "app_name"      -> appName.orUndefined,
+            "app_id"        -> appId,
+            "app_name"      -> appName,
             "page_hostname" -> pageHostname.orUndefined,
             "page_path"     -> pagePath.orUndefined,
             "page_url"      -> pageUrl.orUndefined,
@@ -242,8 +247,8 @@ class Analytics {
           val lastSession: js.UndefOr[String] = if (newSession) date(Some(Instant.now)) else js.undefined
           js.Dictionary[js.Any](
             "event"                     -> eventName,
-            "app_id"                    -> appId.orUndefined,
-            "app_name"                  -> appName.orUndefined,
+            "app_id"                    -> appId,
+            "app_name"                  -> appName,
             "page_hostname"             -> pageHostname.orUndefined,
             "page_path"                 -> pagePath.orUndefined,
             "page_url"                  -> pageUrl.orUndefined,
