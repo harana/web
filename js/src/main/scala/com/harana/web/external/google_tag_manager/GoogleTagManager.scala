@@ -3,7 +3,7 @@ package com.harana.web.external.google_tag_manager
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
-@JSImport("react-gtm-module-nonce-aware", "TagManager")
+@JSImport("react-gtm-module", JSImport.Namespace)
 @js.native
 object TagManager extends js.Object {
   def dataLayer(args: DataLayerArgs): Boolean = js.native

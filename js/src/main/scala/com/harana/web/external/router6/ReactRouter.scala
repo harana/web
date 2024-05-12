@@ -1,4 +1,4 @@
-package com.harana.web.external.router
+package com.harana.web.external.router6
 
 import slinky.core._
 import slinky.core.annotations.react

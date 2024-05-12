@@ -1,9 +1,9 @@
 package com.harana.web.base
 
 import com.harana.sdk.shared.models.jwt.HaranaClaims
-import com.harana.web.external.google_tag_manager.{DataLayerArgs, TagManager, TagManagerArgs}
 import com.harana.web.external.history.History
 import org.scalajs.dom
+import typings.std.global.console
 
 import java.time.format.DateTimeFormatter
 import java.time.{Instant, ZoneId, ZoneOffset}
@@ -11,13 +11,9 @@ import scala.collection.mutable.ListBuffer
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
 
-class Analytics(appId: String, appName: String, gtmId: String) {
+class Analytics(appId: String, appName: String) {
 
   private val pageHistory = new ListBuffer[String]
-
-  TagManager.initialize(new TagManagerArgs {
-    override val gtmId: String = gtmId
-  })
 
   val dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC))
 
@@ -199,16 +195,16 @@ class Analytics(appId: String, appName: String, gtmId: String) {
     ))
 
   def appStart =
-    pushEvent("app_start", None)
+    pushEvent("app_start")
 
   def appStop =
-    pushEvent("app_stop", None)
+    pushEvent("app_stop")
 
   def init(claims: HaranaClaims) =
     pushEvent("init", Some(claims))
 
   def launch =
-    pushEvent("launch", None)
+    pushEvent("launch")
 
   def pageView(pageHostname: String, pagePath: String, pageReferrer: Option[String], pageUrl: String) =
     pushEvent("page_view", None, pageHostname = Some(pageHostname), pagePath = Some(pagePath), pageReferrer = pageReferrer, pageUrl = Some(pageUrl))
@@ -223,7 +219,7 @@ class Analytics(appId: String, appName: String, gtmId: String) {
     pushEvent("unsubscribe", Some(claims))
 
   def pushEvent(eventName: String,
-                claims: Option[HaranaClaims],
+                claims: Option[HaranaClaims] = None,
                 newSession: Boolean = false,
                 pageHostname: Option[String] = None,
                 pagePath: Option[String] = None,
@@ -274,9 +270,7 @@ class Analytics(appId: String, appName: String, gtmId: String) {
             "trial_started"             -> date(claims.get.billing.trialStarted))
       }
 
-      TagManager.dataLayer(new DataLayerArgs {
-        override val dataLayer = event
-      })
+      js.Dynamic.global.window.dataLayer.push(event)
 
     } catch {
       case e: Exception => println(s"Failed to send event: ${e.getMessage}")

@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 import typings.std.Record
 
-@JSImport("@tauri-apps/api", "Window")
+@JSImport("@tauri-apps/api/Window", JSImport.Namespace)
 @js.native
 object Window extends js.Object {
   def getCurrent(): WebviewWindow = js.native
@@ -16,7 +16,7 @@ object Window extends js.Object {
   def availableMonitors(): js.Promise[Array[Monitor]] = js.native
 }
 
-@JSImport("@tauri-apps/api", "WebviewWindowHandle")
+@JSImport("@tauri-apps/api/WebviewWindowHandle", JSImport.Namespace)
 @js.native
 class WebviewWindowHandle(label: String = js.native,
                           listeners: Record[String, Array[WindowEventCallback[js.Any]]] = js.native) extends js.Object {
@@ -24,7 +24,7 @@ class WebviewWindowHandle(label: String = js.native,
   def once[T](event: String, handler: WindowEventCallback[T]): js.Promise[UnlistenFn] = js.native
   def emit(event: String, payload: Option[js.Any]): js.Promise[Unit] = js.native
 }
-@JSImport("@tauri-apps/api", "WindowManager")
+@JSImport("@tauri-apps/api/WindowManager", JSImport.Namespace)
 @js.native
 class WindowManager() extends WebviewWindowHandle {
   def scaleFactor(): js.Promise[Double] = js.native
@@ -84,11 +84,11 @@ class WindowManager() extends WebviewWindowHandle {
   def close(): js.Promise[Unit] = js.native
 }
 
-@JSImport("@tauri-apps/api", "WebviewWindow")
+@JSImport("@tauri-apps/api/WebviewWindow", JSImport.Namespace)
 @js.native
-class WebviewWindow(label: String, options: WindowOptions) extends WindowManager
+class WebviewWindow(val label: String, val options: WindowOptions) extends WindowManager
 
-@JSImport("@tauri-apps/api", "WebviewWindow")
+@JSImport("@tauri-apps/api/WebviewWindow", JSImport.Namespace)
 @js.native
 object WebviewWindow extends js.Object {
   def getByLabel(label: String): Option[WebviewWindow] = js.native
