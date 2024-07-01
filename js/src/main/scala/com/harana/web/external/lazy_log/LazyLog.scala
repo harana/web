@@ -10,7 +10,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
-@JSImport("react-lazylog-x", "LazyLog")
+@JSImport("@melloware/react-logviewer", "LazyLog")
 @js.native
 object ReactLazyLog extends js.Object
 

@@ -120,7 +120,7 @@ trait SourceMapConsumer extends js.Object {
   def sourceContentFor(source: String, returnNullOnMissing: Boolean): String | Null = js.native
 }
 
-@JSImport("source-map", "SourceMapConsumer")
+@JSImport("source-map-js", "SourceMapConsumer")
 @js.native
 object SourceMapConsumer extends TopLevel[SourceMapConsumerConstructor]
 

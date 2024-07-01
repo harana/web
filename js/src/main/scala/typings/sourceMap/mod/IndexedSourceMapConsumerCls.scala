@@ -5,7 +5,7 @@ import scala.scalajs.js
 import scala.scalajs.js.`|`
 import scala.scalajs.js.annotation._
 
-@JSImport("source-map", "IndexedSourceMapConsumer")
+@JSImport("source-map-js", "IndexedSourceMapConsumer")
 @js.native
 class IndexedSourceMapConsumerCls protected () extends Promise[IndexedSourceMapConsumer] {
   def this(rawSourceMap: String) = this()

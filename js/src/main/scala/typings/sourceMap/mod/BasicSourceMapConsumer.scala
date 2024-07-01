@@ -13,7 +13,7 @@ trait BasicSourceMapConsumer extends SourceMapConsumer {
   var sourcesContent: js.Array[String] = js.native
 }
 
-@JSImport("source-map", "BasicSourceMapConsumer")
+@JSImport("source-map-js", "BasicSourceMapConsumer")
 @js.native
 object BasicSourceMapConsumer extends TopLevel[BasicSourceMapConsumerConstructor]
 

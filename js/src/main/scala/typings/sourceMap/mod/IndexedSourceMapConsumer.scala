@@ -10,7 +10,7 @@ trait IndexedSourceMapConsumer extends SourceMapConsumer {
   var sources: js.Array[String] = js.native
 }
 
-@JSImport("source-map", "IndexedSourceMapConsumer")
+@JSImport("source-map-js", "IndexedSourceMapConsumer")
 @js.native
 object IndexedSourceMapConsumer extends TopLevel[IndexedSourceMapConsumerConstructor]
 

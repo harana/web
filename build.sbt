@@ -6,7 +6,7 @@ val web = haranaCrossProject("web").in(file("."))
     libraryDependencies ++=
       Library.circe.value :+
       Library.upickle.value :+
-      "com.harana" %%% "sdk" % "1.0.0"
+      "com.harana" %%% "sdk" % "1.0.1"
   )
   .jsSettings(
     libraryDependencies ++=

@@ -4,7 +4,7 @@ import scala.scalajs.js
 import scala.scalajs.js.`|`
 import scala.scalajs.js.annotation._
 
-@JSImport("source-map", "SourceNode")
+@JSImport("source-map-js", "SourceNode")
 @js.native
 class SourceNode () extends js.Object {
   def this(
@@ -36,7 +36,7 @@ class SourceNode () extends js.Object {
 }
 
 /* static members */
-@JSImport("source-map", "SourceNode")
+@JSImport("source-map-js", "SourceNode")
 @js.native
 object SourceNode extends js.Object {
   def fromStringWithSourceMap(code: String, sourceMapConsumer: SourceMapConsumer): SourceNode = js.native
